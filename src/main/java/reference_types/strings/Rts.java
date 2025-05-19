@@ -1,8 +1,7 @@
 package reference_types.strings;
-
 import java.util.Scanner;
 
-public class rts {
+public class Rts {
 /* 1 Дана строка. Вывести первый, последний и средний (если он есть) символы.
 Напишите программу, которая выводит часть строки до первой встреченной точки, включая точку.
 Также предусмотрите вывод количества пробелов.
@@ -64,5 +63,6 @@ count++; }
             thelongestword = array1[i];
         }
         System.out.println("Найдовше слово: " + thelongestword + " В ньому " + maxwordlength + " символів");
+
     }
 }
