@@ -11,8 +11,7 @@ public class Arrays {
         task5();
     }
 
-    /*-1-
-    Максимальное среди массива на 20 чисел
+    /*-1-    Максимальное среди массива на 20 чисел
     1. В методе initializeArray():
     1.1. Создайте массив на 20 чисел
     1.2. Считайте с консоли 20 чисел и заполните ими массив
@@ -49,8 +48,7 @@ public class Arrays {
         System.out.println("]. Максимальне значення в масиві - " + max20);
     }
 
-    /*-2-
-    Массив из строчек в обратном порядке
+    /*-2-    Массив из строчек в обратном порядке
     1. Создать массив на 10 строчек.
     2. Ввести с клавиатуры 8 строчек и сохранить их в массив.
     3. Вывести содержимое всего массива (10 элементов) на экран в обратном порядке. Каждый элемент - с новой строки.*/
@@ -63,12 +61,11 @@ public class Arrays {
             String element1 = scanner2.nextLine();
             array10[i] = element1;
         }
-        for (int i = 9; i >= 0; i--)
+        for (int i = array10.length - 1; i >= 0; i--)
             System.out.println("Наш масив: " + array10[i]);
     }
 
-    /*-3-
-            2 массива
+    /*-3-            2 массива
     1. Создать массив на 10 строк.
     2. Создать массив на 10 чисел.
     3. Ввести с клавиатуры 10 строк, заполнить ими массив строк.
@@ -77,27 +74,25 @@ public class Arrays {
     public static void task3() {
         String[] array10new = new String[10];
         int[] array10newb = new int[10];
-        String element4 = new String();
         System.out.print("Завдання 3. Давайте створимо масив на 10 записів.");
         Scanner scanner3 = new Scanner(System.in);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < array10new.length; i++) {
             System.out.println(" Введіть текст:");
             String element3 = scanner3.nextLine();
             array10new[i] = element3;
             array10newb[i] = element3.length();
         }
         System.out.print("Введений масив слів: ");
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < array10new.length; i++) {
             System.out.print(array10new[i] + " ");
         }
         System.out.println("Масив з довжиною слів: ");
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < array10newb.length; i++) {
             System.out.println(array10newb[i] + ";");
         }
     }
 
-    /*-4-
-    Массив из чисел в обратном порядке
+    /*-4-    Массив из чисел в обратном порядке
     1. Создать массив на 10 чисел.
     2. Ввести с клавиатуры 10 чисел и записать их в массив.
     3. Расположить элементы массива в обратном порядке.
@@ -106,13 +101,17 @@ public class Arrays {
         int[] array10task4 = new int[10];
         System.out.println("Завдання 4. Давайте створимо масив на 10 записів. ");
         Scanner scanner5 = new Scanner(System.in);
-        for (int i = 9; i >= 0; i--) {
+        for (int i = 0; i < array10task4.length; i++) {
             System.out.println("Введіть число:");
-            int elementTask4 = Integer.parseInt(scanner5.nextLine());
-            array10task4[i] = elementTask4;
+            array10task4[i] = Integer.parseInt(scanner5.nextLine());
+        }
+        for (int i = 0; i < array10task4.length / 2; i++) {
+            int temp = array10task4[i];
+            array10task4[i] = array10task4[array10task4.length - 1 - i];
+            array10task4[array10task4.length - 1 - i] = temp;
         }
         System.out.println("Масив: ");
-        for (int j = 0; j < 10; j++) {
+        for (int j = 0; j < array10task4.length; j++) {
             System.out.println(array10task4[j] + ";");
         }
     }
@@ -132,22 +131,9 @@ public class Arrays {
         Scanner scanner6 = new Scanner(System.in);
         for (int i = 0; i < 20; i++) {
             System.out.println("Введіть число:");
-            int elementTask5 = Integer.parseInt(scanner6.nextLine());
-            array20task5[i] = elementTask5;
-        }
-//        System.out.println("Великий масив для самоперевірки: ");
-//        for (int i = 0; i < 20; i++) {
-//            System.out.println(array20task5[i] + ";");
-//        }
-        for (int j = 0; j < 10; j++) {
-            array10atask5[j] = array20task5[j];
-        }
-//        System.out.println("Масив 1 для самоперевірки:");
-//        for (int j = 0; j < 10; j++) {
-//            System.out.println(array10atask5[j] + ";");
-//        }
-        for (int k = 0; k < 10; k++) {
-            array10btask5[k] = array20task5[k + 10];
+            array20task5[i] = Integer.parseInt(scanner6.nextLine());
+            if (i < array20task5.length / 2) array10atask5[i] = array20task5[i];
+            else array10btask5[i - 10] = array20task5[i];
         }
         System.out.println("Масив 2: ");
         for (int l = 0; l < 10; l++) {
