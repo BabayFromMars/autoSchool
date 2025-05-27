@@ -35,8 +35,10 @@ public class ConditionalOperatorsLoops {
         int number2 = Integer.parseInt(scanner2.nextLine());
         if (number1 > number2) {
             System.out.println("Second number: " + number2 + " is minimal.");
-        } else {
+        } else if (number2 > number1) {
             System.out.println("First number: " + number1 + " is minimal.");
+        } else {
+            System.out.println("Numbers are equal.");
         }
     }
 
@@ -71,7 +73,6 @@ public class ConditionalOperatorsLoops {
         for (int num : array3) {
             System.out.print(num + " ");
         }
-
     }
 
     /* Task 4 Enter two names from the keyboard, and if the names are the same, display the message "The names are identical".
@@ -127,23 +128,30 @@ secret = random.nextInt(20 + 1); */
     public static void task7() {
         Random random = new Random();
         int secret = random.nextInt(20 + 1);
+        boolean guessed = false;
         System.out.println(secret);
         Scanner scan1 = new Scanner(System.in);
         System.out.println("Hello stranger, guess the number between 0 to 20. You have 7 attempts. let's start.");
         for (int i = 0; i < 7; i++) {
             System.out.println("Provide your guess:");
             int a = Integer.parseInt(String.valueOf(scan1.nextLine()));
+            System.out.println(a);
             if (a > secret) {
                 System.out.println("Much");
             } else if (a < secret) {
                 System.out.println("Little");
             } else {
                 System.out.println("Guessed :)");
+                guessed = true;
                 break;
             }
         }
-        System.out.println("Game over...");
+        if (!guessed) {
+            System.out.println("Did not guess :(");
+        }
+        System.out.println("Game over.");
     }
+
 
     /*Task 8 Display the numbers from 1 to 10 using a while loop.*/
     public static void task8() {
@@ -224,7 +232,7 @@ Example output:
 Using the for loop, display even numbers from 1 to 100 inclusive.
 Use a space or a new line.*/
     public static void task13() {
-        for (int i = 0; i < 101; i++) {
+        for (int i = 0; i <= 100; i++) {
             if (i % 2 == 0) {
                 System.out.print(i + " ");
             }
@@ -273,8 +281,7 @@ Use a space or a new line.*/
             for (int j = 1; j <= i; j++) {
                 System.out.print("8");
             }
-            System.out.println();
-            System.out.println();
+            System.out.println("\n");
         }
     }
 

@@ -132,8 +132,9 @@ public class Arrays {
         for (int i = 0; i < 20; i++) {
             System.out.println("Введіть число:");
             array20task5[i] = Integer.parseInt(scanner6.nextLine());
-            if (i < array20task5.length / 2) array10atask5[i] = array20task5[i];
-            else array10btask5[i - 10] = array20task5[i];
+            if (i < array20task5.length / 2) {
+                array10atask5[i] = array20task5[i];
+            } else array10btask5[i - 10] = array20task5[i];
         }
         System.out.println("Масив 2: ");
         for (int l = 0; l < 10; l++) {
