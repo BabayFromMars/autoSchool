@@ -1,9 +1,5 @@
-package oop.practice;
+package figur.oop;
 
-import figur.oop.Circle;
-import figur.oop.Figures;
-import figur.oop.Square;
-import figur.oop.Triangle;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
@@ -12,7 +8,8 @@ public class Oop {
     public static void main(String[] args) {
         task1();
     }
-    /*In a separate figur package you need to create a class structure and implement the necessary methods.
+
+    /*In a separate figure package you need to create a class structure and implement the necessary methods.
 There must be a base abstract class and its descendants.
 All functions must be implemented.
 In the Main class with the main method main, the task must be implemented.
@@ -31,31 +28,29 @@ The following items should be implemented in the main function:
 - output the sorted array on the console in the form : Name, S=area*/
     public static void task1() {
         Random random = new Random();
-
-        Figures[] randomefigures = new Figures[10];
+        Figure[] randomFigures = new Figure[10];
         System.out.println("Initial array:");
-
         for (int i = 0; i < 10; i++) {
             int type = random.nextInt(3);
-            double coordinate = random.nextDouble(100);
             switch (type) {
                 case 0:
-                    randomefigures[i] = new Circle("Circle", coordinate);
+                    randomFigures[i] = Circle.generateRandomeCircle();
                     break;
                 case 1:
-                    randomefigures[i] = new Triangle("Triangle", coordinate);
+                    randomFigures[i] = Triangle.generateRandomeTriangle();
                     break;
                 case 2:
-                    randomefigures[i] = new Square("Square", coordinate);
+                    randomFigures[i] = Square.generateRandomeSquare();
                     break;
             }
-            System.out.println("Shape " + i + ": " + randomefigures[i].getName() + ", Coordinate: " + randomefigures[i].getcoordinates() +
-                    ", S = " + randomefigures[i].areacalculation());
+            System.out.println("Shape " + i + ": " + randomFigures[i].getName() + ", Coordinate X: " + randomFigures[i].getCoordinateX() +
+                    ", Coordinate Y: " + randomFigures[i].getCoordinateY() +
+                    ", S = " + randomFigures[i].getAreaCalculation());
         }
         System.out.println("\nArea of shapes in ASC order:");
-        Arrays.sort(randomefigures, Comparator.comparingDouble(Figures::areacalculation));
+        Arrays.sort(randomFigures, Comparator.comparingDouble(Figure::getAreaCalculation));
         for (int i = 0; i < 10; i++) {
-            System.out.println(randomefigures[i].getName() + ", S = " + String.format("%.2f", randomefigures[i].areacalculation()));
+            System.out.println(randomFigures[i].getName() + ", S = " + String.format("%.2f", randomFigures[i].getAreaCalculation()));
         }
     }
 }
