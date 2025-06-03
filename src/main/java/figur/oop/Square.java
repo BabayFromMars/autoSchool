@@ -1,23 +1,22 @@
 package figur.oop;
 
-public class Square extends Figures {
+import java.util.Random;
 
-    public Square(String name, Double coordinates) {
-        super(name, coordinates);
+public class Square extends Figure {
+    private Double side;
+
+    public Square(String name, Double coordinateX, Double coordinateY, Double side) {
+        super(name, coordinateX, coordinateY);
+        this.side = side;
     }
-
-    @Override
-    public Double getcoordinates() {
-        return super.getcoordinates();
-    }
-
-    @Override
-    public String getName() {
-        return super.getName();
-    }
-
-    public Double areacalculation() {
-      Double ssquare = getcoordinates() * getcoordinates();
-        return ssquare;
+public static Square generateRandomeSquare (){
+    Random random = new Random();
+    Double x = random.nextDouble() * 100;
+    Double y = random.nextDouble() * 100;
+    Double side = random.nextDouble() * 20 + 1;
+    return new Square("Square", x, y, side);
+}
+    public Double getAreaCalculation() {
+        return side* side;
     }
 }
