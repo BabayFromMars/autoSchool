@@ -43,9 +43,7 @@ The following items should be implemented in the main function:
                     randomFigures[i] = Square.generateRandomeSquare();
                     break;
             }
-            System.out.println("Shape " + i + ": " + randomFigures[i].getName() + ", Coordinate X: " + randomFigures[i].getCoordinateX() +
-                    ", Coordinate Y: " + randomFigures[i].getCoordinateY() +
-                    ", S = " + randomFigures[i].getAreaCalculation());
+            System.out.println(randomFigures[i].toString());
         }
         System.out.println("\nArea of shapes in ASC order:");
         Arrays.sort(randomFigures, Comparator.comparingDouble(Figure::getAreaCalculation));
