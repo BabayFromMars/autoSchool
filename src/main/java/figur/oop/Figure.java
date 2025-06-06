@@ -2,9 +2,9 @@ package figur.oop;
 
 
 public abstract class Figure {
-    private String name;
-    private Double coordinateX;
-    private Double coordinateY;
+    private final String name;
+    private final Double coordinateX;
+    private final Double coordinateY;
 
 
     public Figure(String name, Double coordinateX, Double coordinateY) {
@@ -17,12 +17,15 @@ public abstract class Figure {
         return name;
     }
 
-    public Double getCoordinateX() {
-        return coordinateX;
-    }
-    public Double getCoordinateY() {
-        return coordinateY;
-    }
-
     abstract public Double getAreaCalculation();
+
+    @Override
+    public String toString() {
+        return "Figure{" +
+                "name='" + name + '\'' +
+                ", coordinateX=" + coordinateX +
+                ", coordinateY=" + coordinateY + ", S: " +
+                getAreaCalculation() +
+                '}';
+    }
 }
