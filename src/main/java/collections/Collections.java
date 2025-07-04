@@ -3,25 +3,25 @@ package collections;
 import java.time.LocalDate;
 import java.util.*;
 
-public class Collections {
+public class Collections extends Cat {
     public static void main(String[] args) {
-        task1();
-        task2();
-        task3();
-        task4();
-        task5();
+//        task1();
+//        task2();
+        //       task3();
+//        task4();
+//        task5();
         task6();
-        task7();
-        task8();
-        task9();
-        task10();
-        task11();
-        task12();
-        task13();
-        task14();
-        task15();
-        task16();
-        task17();
+//        task7();
+//        task8();
+//        task9();
+//        task10();
+//        task11();
+//        task12();
+//        task13();
+//        task14();
+//        task15();
+//        task16();
+//        task17();
     }
 
     /*Task 1.  HashSet from plants
@@ -74,16 +74,27 @@ Add 10 cats to the collection, use cat name as a key.
 Print the result on the screen, each item on a new line.*/
     public static void task3() {
         HashMap<String, Cat> hashmap = new HashMap<>();
-        hashmap.put("Bandito", new Cat());
-        hashmap.put("Snezhok", new Cat());
-        hashmap.put("Bonya", new Cat());
-        hashmap.put("Petrovich", new Cat());
-        hashmap.put("Babay", new Cat());
-        hashmap.put("Little lion", new Cat());
-        hashmap.put("Mars", new Cat());
-        hashmap.put("Bizzy Bone", new Cat());
-        hashmap.put("Krazy Bone", new Cat());
-        hashmap.put("Layzie Bone", new Cat());
+        Cat bandito = new Cat("Bandito");
+        Cat snezhok = new Cat("Snezhok");
+        Cat petrovich = new Cat("Petrovich");
+        Cat babay = new Cat("Babay");
+        Cat littleLion = new Cat("Little lion");
+        Cat mars = new Cat("Mars");
+        Cat bizzyBone = new Cat("Bizzy Bone");
+        Cat krazyBone = new Cat("Krazy Bone");
+        Cat layzieBone = new Cat("Layzie Bone");
+        Cat qd = new Cat("QD");
+
+        hashmap.put(bandito.getName(), bandito);
+        hashmap.put(snezhok.getName(), snezhok);
+        hashmap.put(petrovich.getName(), petrovich);
+        hashmap.put(babay.getName(), babay);
+        hashmap.put(littleLion.getName(), littleLion);
+        hashmap.put(mars.getName(), mars);
+        hashmap.put(bandito.getName(), bizzyBone);
+        hashmap.put(krazyBone.getName(), krazyBone);
+        hashmap.put(littleLion.getName(), layzieBone);
+        hashmap.put(qd.getName(), qd);
         hashmap.forEach((key, value) -> System.out.println(value + ": " + key));
     }
 
@@ -131,18 +142,18 @@ Print the result on the screen, each item on a new line.*/
     Sim - 5 */
     public static void task6() {
 
-        HashMap<String, Collections> hashmap = new HashMap<>();
-        hashmap.put("Bandito", new Collections());
-        hashmap.put("Snezhok", new Collections());
-        hashmap.put("Bonya", new Collections());
-        hashmap.put("Petrovich", new Collections());
-        hashmap.put("Babay", new Collections());
-        hashmap.put("Little lion", new Collections());
-        hashmap.put("Mars", new Collections());
-        hashmap.put("Bizzy Bone", new Collections());
-        hashmap.put("Krazy Bone", new Collections());
-        hashmap.put("Layzie Bone", new Collections());
-        hashmap.forEach((key, value) -> System.out.println(value + ": " + key));
+        HashMap<String, Object> hashmap = new HashMap<>();
+        hashmap.put("Bandito", new Cat());
+        hashmap.put("Snezhok", "test");
+        hashmap.put("Bonya", new int[3]);
+        hashmap.put("Petrovich", (4.1));
+        hashmap.put("Babay", (false));
+        hashmap.put("Little lion", new LinkedHashSet<>());
+        hashmap.put("Mars", new ArrayList<>());
+        hashmap.put("Bizzy Bone", new HashSet<>());
+        hashmap.put("Krazy Bone", new char[4]);
+        hashmap.put("Layzie Bone", new Cat[3]);
+        hashmap.forEach((key, value) -> System.out.println(key + " - " + value.toString()));
     }
 
     /*Creating and using ArrayList
