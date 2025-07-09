@@ -6,6 +6,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class RestApi {
     public static void main(String[] args) {
@@ -112,7 +113,7 @@ public class RestApi {
             }
             modifiedEndpoints.add(processedEndpoint);
         }
-        System.out.println("Starting sending requests... Please wait...");
+        System.out.println(" Task 1. Starting sending requests... Please wait...");
         String baseUrl = "https://nghttp2.org/httpbin";
         Map<String, Integer> resultsOther = new HashMap<>();
         Map<String, Integer> results200 = new HashMap<>(); //Не вимагалося, зробив для наглядності і цікавості
@@ -122,7 +123,7 @@ public class RestApi {
                     .given()
                     .header("User-Agent", "Learning Automation")
                     .when()
-                    .get("https://nghttp2.org/httpbin" + modEndpoints);
+                    .get(baseUrl + modEndpoints);
             int responseCode = responseModifiedEndpoints.getStatusCode();
             if (responseCode != 200) {
                 resultsOther.put(baseUrl + modEndpoints, responseCode);
@@ -150,7 +151,7 @@ public class RestApi {
     return a List with two HashMaps or a tuple with two dictionaries: the 'form' object of the response body and response headers
     Additional requirements:
     Send requests with 'User-Agent': 'Learning Automation'*/
-    public static Map<String, Object> task2(Map<String, Object> requestBodyData, Map<String, String> headers) {
+    public static List<Map<String, ?>> task2(Map<String, Object> requestBodyData, Map<String, String> headers) {
 
         Response response = RestAssured
                 .given()
@@ -158,24 +159,17 @@ public class RestApi {
                 .formParams(requestBodyData)
                 .when()
                 .post("http://httpbin.org/post");
-
         Map<String, Object> responseForm;
         JsonPath responseJson = response.jsonPath();
         responseForm = responseJson.getMap("form");
-
-        Map<String, String> rawResponseHeaders = new HashMap<>();  //У мене не працює asMap() чомусь, нічого не зміг з цим зробити, бот підказав як це обійти.
-        for (Header header : response.getHeaders().asList()) {
-            rawResponseHeaders.put(header.getName(), header.getValue());
-        }
-        Map<String, Object> responseHeadersAsObjectMap = new HashMap<>();
-        responseHeadersAsObjectMap.putAll(rawResponseHeaders);
-
+        Map<String, String> responseHeaders = response.getHeaders().asList().stream().
+                collect(Collectors.toMap(Header::getName, Header::getValue));
         System.out.println("--- Task 2 Results ---");
-        Map<String, Object> finalResult = new HashMap<>();
-        finalResult.put("\nform", responseForm);
-        finalResult.put("\nheaders", rawResponseHeaders);
-        System.out.println("Final Result Map: " + finalResult);
-        return finalResult;
+        List<Map<String, ?>> finalResultList = new ArrayList<>();
+        finalResultList.add(responseForm);
+        finalResultList.add(responseHeaders);
+        System.out.println("Final Result Map: " + finalResultList);
+        return finalResultList;
     }
 
     /*
@@ -197,8 +191,8 @@ public class RestApi {
                 .when()
                 .get("https://restcountries.com/v3.1/all?fields=languages");
         JsonPath responseJson = response.jsonPath();
-        List<Map<String, Object>> languagesRawData = responseJson.getList("$");
-        //System.out.println("test: " + languagesRawData); //Для контролю, я пам'ятаю, що ніякого закоментованого коду не має бути
+        List<Map<String, Object>> languagesRawData = responseJson.getList("");
+        //    System.out.println("test: " + languagesRawData); //Для контролю, я пам'ятаю, що ніякого закоментованого коду не має бути
         Set<String> languagesFinal = new HashSet<>();
         for (int i = 0; i < languagesRawData.size(); i++) {
             Map<String, Object> curentCountry = languagesRawData.get(i);
@@ -243,7 +237,7 @@ public class RestApi {
             }
             System.out.println("Language code: \"" + oneCode + "\" has population: " + totalPopulationNum); //Для наглядності
         }
-        System.out.println("Result: " + finalResult); //Для наглядності
+        System.out.println("Task 3 Result: " + finalResult); //Для наглядності
         return finalResult;
     }
 }

@@ -3,17 +3,15 @@ package reflection;
 import java.lang.reflect.Field;
 import java.util.Random;
 
-import static reflection.ReflectionFather.getNameAndContent;
-
 public class Program {
     public static void main(String[] args) throws IllegalAccessException {
         ReflectionDaughter daughter = new ReflectionDaughter();
         fillFields(daughter);
-        getNameAndContent(daughter);
+        daughter.getNameAndContent();
 
         ReflectionSon son = new ReflectionSon();
         fillFields(son);
-        getNameAndContent(son);
+        son.getNameAndContent();
     }
 
     /*Create a parent class that has several successor classes and a Program class.
