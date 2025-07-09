@@ -3,6 +3,7 @@ package stream.api;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class StreamApi {
     public static void main(String[] args) {
@@ -34,18 +35,18 @@ public class StreamApi {
         myList.add("");
         System.out.println("Розмір списку: " + myList.size());
         System.out.println("Cписок: " + myList);
-        System.out.print("Довжина слів в списку: ");
-        myList.stream()
-                .map(String::length)
-                .forEach(len -> System.out.print(len + "; "));
-        System.out.println("\nНе пусті записи, які маюсть d в складі: ");
-        myList.stream()
-                .filter(d -> d.contains("d"))
-                .forEach(d -> System.out.print(d + "; "));
-        System.out.println("\nСписок в алфавітному порядку: ");
-        myList.stream()
-                .filter(alf -> !alf.isEmpty())
+        List<Integer> lengths = new ArrayList<>();
+        List<String> wordsWithoutD = new ArrayList<>();
+        List<String> sortedList = myList.stream()
+                .peek(word -> lengths.add(word.length()))
+                .filter(word -> !word.isEmpty())
+                .peek(word -> {
+                    if (!word.contains("d")) wordsWithoutD.add(word);
+                })
                 .sorted()
-                .forEach(alf -> System.out.print(alf + "; "));
+                .collect(Collectors.toList());
+        System.out.println("Довжина слів в списку: " + lengths);
+        System.out.println("Не пусті записи, які не мають 'd': " + wordsWithoutD);
+        System.out.println("Список в алфавітному порядку: " + sortedList);
     }
 }
