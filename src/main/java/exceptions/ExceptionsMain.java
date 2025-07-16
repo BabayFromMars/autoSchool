@@ -22,7 +22,7 @@ public class ExceptionsMain {
 
     public static void task1() throws InterruptedException {
         MyExceptions1 ex1 = new MyExceptions1(); //не вимагалося в завданні, але навіщо ми тоді писали
-        MyExceptions1.sleepingTryCatch();
+        ex1.sleepingTryCatch();
 
         MyExceptions2 ex2 = new MyExceptions2(); //не вимагалося в завданні, але навіщо ми тоді писали
         ex2.sleepingThrows();

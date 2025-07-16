@@ -1,7 +1,7 @@
 package exceptions;
 
 public class MyExceptions1 {
-    public static void sleepingTryCatch() {
+    public void sleepingTryCatch() {
         try {
             System.out.println("Засинають автоматизатори...");
             Thread.sleep(3000);
